@@ -17,8 +17,9 @@ RUN mkdir build
 RUN sed -i 's:\.\./:/meta/:g' config.toml
 
 WORKDIR /meta/build
-RUN cmake .. -DCMAKE_BUILD_TYPE=Release -DLIBCXX_LIBRARY=/lib/llvm-14/lib/libc++.so.1
+RUN cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=On -DBUILD_STATIC_ICU=On -DLIBCXX_LIBRARY=/lib/llvm-14/lib/libc++.so.1
 RUN make
 RUN ./unit-test --reporter=spec
+RUN make install
 
 WORKDIR /app
