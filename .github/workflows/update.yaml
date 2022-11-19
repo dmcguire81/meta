@@ -1,8 +1,12 @@
 name: Docker Base Image CI
 
+concurrency:
+  group: docker-base-image-ci
+  cancel-in-progress: true
+
 on:
   schedule:
-    - cron: '* * * * *'
+    - cron: '0 0 * * *'
 
 jobs:
   docker:
