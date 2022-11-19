@@ -1,0 +1,21 @@
+name: Docker Base Image CI
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+      - name: Check for image updates
+        id: check
+        uses: lucacome/docker-image-update-checker@v1
+        with:
+          base-image: library/ubuntu:22.04
+          image: josecols/meta:3.0.2
+      - name: Abort
+        run: exit 1
+        if: steps.check.outputs.needs-updating == 'false'

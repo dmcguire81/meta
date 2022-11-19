@@ -4,13 +4,18 @@ concurrency:
   group: docker-image-ci
   cancel-in-progress: true
 
-on: push
+on:
+  push:
+  workflow_run:
+    workflows: [ "Docker Base Image CI" ]
+    types:
+      - completed
 
 jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out the repo
+      - name: Check out the repository
         uses: actions/checkout@v3
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
