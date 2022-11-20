@@ -1,4 +1,4 @@
-FROM ubuntu:jammy
+FROM ubuntu:22.04
 
 ENV CC=clang-14
 ENV CXX=clang++-14
@@ -6,10 +6,16 @@ ENV PATH=/meta/build:$PATH
 
 COPY . /meta
 
-RUN apt-get update
-RUN apt install -y software-properties-common
-RUN apt-get install -y git cmake libjemalloc-dev zlib1g-dev
-RUN apt-get install -y clang-14 lld-14 libc++-14-dev libc++abi-14-dev
+RUN apt-get update && apt-get install -y \
+    clang-14  \
+    cmake  \
+    git  \
+    libc++-14-dev  \
+    libc++abi-14-dev \
+    libjemalloc-dev  \
+    lld-14  \
+    software-properties-common \
+    zlib1g-dev
 
 WORKDIR /meta
 RUN git submodule update --init --recursive
