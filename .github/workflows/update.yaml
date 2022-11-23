@@ -22,4 +22,4 @@ jobs:
           image: josecols/meta:3.0.2
       - name: Abort
         run: exit 1
-        if: steps.check.outputs.needs-updating == 'false'
+        if: steps.check.outputs.needs-updating == 'true'
