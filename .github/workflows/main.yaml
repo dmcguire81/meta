@@ -6,6 +6,8 @@ concurrency:
 
 on:
   push:
+    branches:
+      - submodule/metapy
   workflow_run:
     workflows: [ "Docker Base Image CI" ]
     types:
