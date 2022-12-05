@@ -66,16 +66,16 @@ our ACL demo paper:
 # Project setup
 
 ## Docker
-A Docker image with a pre-built version of MeTA is available on [Docker Hub](https://hub.docker.com/r/josecols/meta/tags).
+A Docker image with a pre-built version of MeTA is available on [GitHub Container Registry](https://github.com/illinois/meta/pkgs/container/meta/).
 
 ```bash
-docker pull josecols/meta:3.0.2
+docker pull ghcr.io/illinois/meta:3.0.2
 ```
 
 This docker image makes the MeTA binaries globally available, allowing you to run them from anywhere. For example, to perform [Basic Text Analysis](https://meta-toolkit.org/profile-tutorial.html) on a document, you can create a container from the image and run the following command:
 
 ```bash
-docker run -it --rm --name meta --mount type=bind,source=$(pwd),target=/app --entrypoint bash josecols/meta:3.0.2
+docker run -it --rm --name meta --mount type=bind,source=$(pwd),target=/app --entrypoint bash ghcr.io/illinois/meta:3.0.2
 profile /meta/config.toml doc.txt --stop
 ```
 
