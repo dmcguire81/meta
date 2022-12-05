@@ -19,7 +19,7 @@ jobs:
         uses: lucacome/docker-image-update-checker@v1
         with:
           base-image: library/ubuntu:22.04
-          image: josecols/meta:3.0.2
+          image: ghcr.io/illinois/meta:3.0.2
       - name: Abort
         run: exit 1
         if: steps.check.outputs.needs-updating == 'true'
