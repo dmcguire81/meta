@@ -1,17 +1,18 @@
 # MeTA: ModErn Text Analysis
 
-This fork of [MeTA](https://meta-toolkit.org) aims to simplify the maintenance of the project
-for its use in CS 410 Text Information Systems at the [University of Illinois at Urbana-Champaign](https://cs.illinois.edu/).
-Thus, a containerized version of MeTA is provided instead of the original installation instructions for each platform.
-This container, based on [Ubuntu 22.04 LTS](https://hub.docker.com/_/ubuntu/), includes a pre-built version 
-of MeTA with support for `amd64` and `arm64` architectures.
+This fork of [MeTA](https://github.com/meta-toolkit/meta) aims to simplify the maintenance of the project
+for its use in CS 410 Text Information Systems at
+the [University of Illinois at Urbana-Champaign](https://cs.illinois.edu/). Thus, a containerized version of MeTA is
+provided instead of the original installation instructions for each platform. This container, based
+on [Ubuntu 22.04 LTS](https://hub.docker.com/_/ubuntu/), includes a pre-built version of [MeTA][meta] with support
+for `amd64` and `arm64` architectures.
 
 ---
 
-Please visit our [web page][meta-website] for information and tutorials
-about MeTA!
+Please visit our [web page][meta] for information and tutorials about MeTA!
 
 # Outline
+
 - [Intro](#intro)
     - [Documentation](#documentation)
     - [Tutorials](#tutorials)
@@ -41,8 +42,7 @@ Doxygen documentation can be found [here][doxygen].
 
 ## Tutorials
 
-We have walkthroughs for a few different parts of MeTA on the
-[MeTA homepage][meta-website].
+We have walkthroughs for a few different parts of MeTA on the [MeTA homepage][meta].
 
 ## Citing
 
@@ -66,20 +66,24 @@ our ACL demo paper:
 # Project setup
 
 ## Docker
-A Docker image with a pre-built version of MeTA is available on [Docker Hub](https://hub.docker.com/r/josecols/meta/tags).
+
+A Docker image with a pre-built version of MeTA is available
+on [Docker Hub](https://hub.docker.com/r/josecols/meta/tags).
 
 ```bash
 docker pull josecols/meta:3.0.2
 ```
 
-This docker image makes the MeTA binaries globally available, allowing you to run them from anywhere. For example, to perform [Basic Text Analysis](https://meta-toolkit.org/profile-tutorial.html) on a document, you can create a container from the image and run the following command:
+This docker image makes the MeTA binaries globally available, allowing you to run them from anywhere. For example, to
+perform [Basic Text Analysis](https://meta-toolkit.org/profile-tutorial.html) on a document, you can create a container
+from the image and run the following command:
 
 ```bash
 docker run -it --rm --name meta --mount type=bind,source=$(pwd),target=/app --entrypoint bash josecols/meta:3.0.2
 profile /meta/config.toml doc.txt --stop
 ```
 
-The docker command above will mount the current directory to the `/app` directory in the container.
+The docker command above will mount the working directory to the `/app` directory in the container.
 This allows you to access the files in the current directory (e.g., `doc.txt`) from the container. Similarly,
 a default `config.toml` file is provided in the `/meta` directory for easy access. However, you can still
 provide your own `config.toml` file by placing it in the current directory of the host machine.
@@ -93,7 +97,6 @@ To build the image locally, run the following command:
 docker build -t meta:latest .
 ```
 
-[homebrew]: http://brew.sh
-[forum]: https://forum.meta-toolkit.org
-[meta-website]: https://meta-toolkit.org
+[meta]: https://meta-toolkit.org
+
 [doxygen]: https://meta-toolkit.org/doxygen/namespaces.html
